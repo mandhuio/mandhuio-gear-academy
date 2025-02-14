@@ -35,6 +35,16 @@ pub enum Player {
     Program,
 }
 
+impl PartialEq for Player {
+    fn eq(&self, other: &Self) -> bool {
+        match (self, other) {
+            (Player::User, Player::User) => true,
+            (Player::Program, Player::Program) => true,
+            _ => false,
+        }
+    }
+}
+
 #[derive(Debug, Clone, Encode, Decode, TypeInfo)]
 pub enum PebblesEvent {
     CounterTurn(u32),
